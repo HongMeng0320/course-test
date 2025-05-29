@@ -1,12 +1,13 @@
 package com.agritech.autonomousfarming.model;
 
+import com.agritech.autonomousfarming.observer.EnvironmentObserver;
 import com.agritech.autonomousfarming.observer.EnvironmentUpdate;
 
 /**
  * 农机设备接口
  * 定义所有农机设备必须实现的基本功能
  */
-public interface AgriculturalMachine {
+public interface AgriculturalMachine extends EnvironmentObserver {
     /**
      * 获取设备ID
      */
@@ -56,11 +57,6 @@ public interface AgriculturalMachine {
      * 执行作业
      */
     void performTask(Task task);
-    
-    /**
-     * 处理环境更新
-     */
-    void handleEnvironmentUpdate(EnvironmentUpdate update);
     
     /**
      * 移动到指定位置

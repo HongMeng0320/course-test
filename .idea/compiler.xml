@@ -2,19 +2,23 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="course-test" />
+        <module name="autonomous-farming-system" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="autonomous-farming-system" target="19" />
       <module name="course-test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="autonomous-farming-system" options="-parameters" />
       <module name="course-test" options="-parameters" />
     </option>
   </component>

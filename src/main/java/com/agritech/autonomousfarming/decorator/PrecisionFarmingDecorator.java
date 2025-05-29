@@ -3,13 +3,14 @@ package com.agritech.autonomousfarming.decorator;
 import com.agritech.autonomousfarming.model.AgriculturalMachine;
 import com.agritech.autonomousfarming.model.Position;
 import com.agritech.autonomousfarming.model.Task;
+import com.agritech.autonomousfarming.observer.EnvironmentObserver;
 import com.agritech.autonomousfarming.observer.EnvironmentUpdate;
 
 /**
  * 精准农业装饰器类
  * 为农机增加精准农业功能
  */
-public class PrecisionFarmingDecorator extends MachineDecorator {
+public class PrecisionFarmingDecorator extends MachineDecorator implements EnvironmentObserver {
     private double precisionLevel; // 精准度级别，1-10
     
     public PrecisionFarmingDecorator(AgriculturalMachine decoratedMachine, double precisionLevel) {

@@ -13,6 +13,7 @@ import com.agritech.autonomousfarming.factory.AgriculturalMachineFactory;
 import com.agritech.autonomousfarming.factory.StandardAgriculturalMachineFactory;
 import com.agritech.autonomousfarming.model.*;
 import com.agritech.autonomousfarming.observer.EnvironmentMonitor;
+import com.agritech.autonomousfarming.observer.EnvironmentObserver;
 import com.agritech.autonomousfarming.singleton.PositioningSystem;
 
 import java.time.LocalDateTime;
@@ -47,16 +48,16 @@ public class SystemDemo implements CommandLineRunner {
         
         // 3. 使用装饰器模式增强播种机功能
         System.out.println("【步骤3】使用装饰器模式增强播种机功能");
-        AgriculturalMachine precisionSeeder = new PrecisionFarmingDecorator(seeder, 8.5);
+        PrecisionFarmingDecorator precisionSeeder = new PrecisionFarmingDecorator(seeder, 8.5);
         System.out.println("已为 " + seeder.getName() + " 添加精准农业功能");
         System.out.println();
         
         // 4. 创建环境监测器（观察者模式）
         System.out.println("【步骤4】创建环境监测器");
         EnvironmentMonitor environmentMonitor = new EnvironmentMonitor("EM-001", "主农田环境监测器");
-        environmentMonitor.registerObserver((Tractor)tractor);
-        environmentMonitor.registerObserver((Seeder)precisionSeeder);
-        environmentMonitor.registerObserver((Harvester)harvester);
+        environmentMonitor.registerObserver(tractor);
+        environmentMonitor.registerObserver(precisionSeeder);
+        environmentMonitor.registerObserver(harvester);
         System.out.println();
         
         // 5. 创建安全处理链（责任链模式）
